@@ -51,6 +51,10 @@ public class GAController implements OnTouchListener {
 	private boolean enableTouchClick = true;
 	private float mouseX = (float) -1.0;
 	private float mouseY = (float) -1.0;
+    protected boolean relative = true;
+    protected float touchZoneWidth = 0;
+    protected float touchZoneHeight = 0;
+
 
 	private final long clickDetectionTime = 100;	/* in ms */
 	private final float clickDetectionDist = 81;	/* in pixel^2 */
@@ -94,7 +98,9 @@ public class GAController implements OnTouchListener {
 	public void onDimensionChange(int width, int height) {
 		relativeLayout.removeAllViews();
 		//
-		mouseX = (float) (width / 2);
+		this.touchZoneWidth = width;
+        this.touchZoneHeight = height;
+        mouseX = (float) (width / 2);
 		mouseY = (float) (height / 2);
 		// panel - the lowest UI, note the Z-order
 		panel = null;
@@ -262,6 +268,7 @@ public class GAController implements OnTouchListener {
 	}
 	
 	public void sendMouseMotion(float x, float y, float xrel, float yrel, int state, boolean relative) {
+        Log.d("ga_log", String.format("mouse motion : x = %f, y = %f, xrel = %f, yrel = %f", x, y, xrel, yrel));
 		if(mapCoordinate(x, y, xrel, yrel) == false)
 			return;
 //		Log.d("ga_log", String.format("send-mouse-motion: %f,%f (%f,%f) state=%d (%s)",
@@ -318,13 +325,24 @@ public class GAController implements OnTouchListener {
 				break;
 			case MotionEvent.ACTION_MOVE:
 				if(count == 1) {
-					float dx = x-lastX;
-					float dy = y-lastY;
-					moveMouse(dx, dy);
-					sendMouseMotion(mouseX, mouseY, dx, dy, 0, /*relative=*/false);
-					drawCursor((int) mouseX, (int) mouseY);
-					lastX = x;
-					lastY = y;
+                    if(this.relative) {
+                        float dx = x-lastX;
+                        float dy = y-lastY;
+                        moveMouse(dx, dy);
+                        sendMouseMotion(mouseX, mouseY, dx, dy, 0, true);
+                        drawCursor((int) mouseX, (int) mouseY);
+                        lastX = x;
+                        lastY = y;
+                    }
+                    else {
+                        sendMouseMotion(x, y, 0, 0, 0, false);
+                        drawCursor((int) x, (int) y);
+                        sendMouseKey(true, SDL2.Button.LEFT, x, y);
+                        sendMouseKey(false, SDL2.Button.LEFT, x, y);
+
+
+                    }
+
 				}
 				break;
 			}

@@ -22,14 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.gaminganywhere.gaclient.util.GAControllerBasic;
-import org.gaminganywhere.gaclient.util.GAControllerDualPad;
-import org.gaminganywhere.gaclient.util.GAControllerEmpty;
-import org.gaminganywhere.gaclient.util.GAControllerLimbo;
-import org.gaminganywhere.gaclient.util.GAControllerN64;
-import org.gaminganywhere.gaclient.util.GAControllerPSP;
-import org.gaminganywhere.gaclient.util.GAControllerPadABXY;
-import org.gaminganywhere.gaclient.util.GAControllerNDS;
+import org.gaminganywhere.gaclient.util.*;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -293,6 +286,11 @@ public class MainActivity extends Activity implements
 		do {
 			HashMap<String,String> item = null;
 			SimpleAdapter adapter = null;
+            // new D3 controller
+            item = new HashMap<String,String>();
+            item.put("name", GAControllerDiablo3.getName());
+            item.put("desc", GAControllerDiablo3.getDescription());
+            list_control.add(item);
 			//
 			item = new HashMap<String,String>();
 			item.put("name", GAControllerBasic.getName());
@@ -328,6 +326,7 @@ public class MainActivity extends Activity implements
 			item.put("name", GAControllerPSP.getName());
 			item.put("desc", GAControllerPSP.getDescription());
 			list_control.add(item);
+
 			//
 //			item = new HashMap<String,String>();
 //			item.put("name", GAControllerPadABXY.getName());

@@ -21,15 +21,7 @@ package org.gaminganywhere.gaclient;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import org.gaminganywhere.gaclient.util.GAController;
-import org.gaminganywhere.gaclient.util.GAControllerBasic;
-import org.gaminganywhere.gaclient.util.GAControllerDualPad;
-import org.gaminganywhere.gaclient.util.GAControllerEmpty;
-import org.gaminganywhere.gaclient.util.GAControllerLimbo;
-import org.gaminganywhere.gaclient.util.GAControllerN64;
-import org.gaminganywhere.gaclient.util.GAControllerNDS;
-import org.gaminganywhere.gaclient.util.GAControllerPSP;
-import org.gaminganywhere.gaclient.util.GAControllerPadABXY;
+import org.gaminganywhere.gaclient.util.*;
 
 import android.app.Activity;
 import android.content.Context;
@@ -223,6 +215,8 @@ public class PlayerActivity extends Activity implements SurfaceHolder.Callback, 
 				controller = new GAControllerPadABXY(this);
 			} else if(cname.equals(GAControllerPSP.getName())) {
 				controller = new GAControllerPSP(this);
+            } else if(cname.equals(GAControllerDiablo3.getName())) {
+                controller = new GAControllerDiablo3(this);
 			} else {
 				controller = new GAControllerBasic(this);
 			}

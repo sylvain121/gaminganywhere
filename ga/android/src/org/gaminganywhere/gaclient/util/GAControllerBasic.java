@@ -18,6 +18,7 @@
 
 package org.gaminganywhere.gaclient.util;
 
+import android.util.Log;
 import org.gaminganywhere.gaclient.util.Pad.PartitionEventListener;
 import android.content.Context;
 import android.view.MotionEvent;
@@ -57,6 +58,7 @@ public class GAControllerBasic extends GAController implements
 		buttonEsc.setText("ESC");
 		buttonEsc.setOnClickListener(this);
 		placeView(buttonEsc, width-keyBtnWidth/5-keyBtnWidth, keyBtnHeight/3, keyBtnWidth, keyBtnHeight);
+        Log.d("ga_log.GAcontrollerBasic", "onDimensionChange");
 		//
 		padLeft = null;
 		padLeft = new Pad(getContext());
