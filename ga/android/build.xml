@@ -33,7 +33,7 @@
          This must be done before we load project.properties since
          the proguard config can use sdk.dir -->
     <property environment="env" />
-    <condition property="sdk.dir" value="/home/lui/sdk/adt-bundle-linux-x86_64-20131030/sdk/">
+    <condition property="sdk.dir" value="${env.ANDROID_HOME}">
         <isset property="env.ANDROID_HOME" />
     </condition>
 
@@ -87,6 +87,6 @@
          in order to avoid having your file be overridden by tools such as "android update project"
     -->
     <!-- version-tag: 1 -->
-    <import file="/home/lui/sdk/adt-bundle-linux-x86_64-20131030/sdk/tools/ant/build.xml" />
+    <import file="${sdk.dir}/tools/ant/build.xml" />
 
 </project>
