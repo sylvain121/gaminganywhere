@@ -1,7 +1,7 @@
 #!/bin/sh
 export KERNEL=`uname -s | tr A-Z a-z`
-export ANDROID_HOME=/home/lui/sdk/adt-bundle-linux-x86_64-20131030/sdk/
-export NDK_ROOT=/home/lui/sdk/android-ndk-r10c/
+export ANDROID_HOME=$ANDROID_SDK
+export NDK_ROOT=$ANDROID_NDK
 #
 export GADEPS=$HOME/perso/gaminganywhere/deps.android
 export PKG_CONFIG_PATH=$GADEPS/lib/pkgconfig
