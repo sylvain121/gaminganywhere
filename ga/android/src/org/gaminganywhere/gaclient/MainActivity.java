@@ -286,11 +286,18 @@ public class MainActivity extends Activity implements
 		do {
 			HashMap<String,String> item = null;
 			SimpleAdapter adapter = null;
-            // new D3 controller
-            item = new HashMap<String,String>();
-            item.put("name", GAControllerDiablo3.getName());
-            item.put("desc", GAControllerDiablo3.getDescription());
-            list_control.add(item);
+            		
+                        // new Mouse controller
+                        item = new HashMap<String,String>();
+                        item.put("name", GAControllerMouse.getName());
+                        item.put("desc", GAControllerMouse.getDescription());
+                        list_control.add(item);
+
+			// new D3 controller
+            		item = new HashMap<String,String>();
+		        item.put("name", GAControllerDiablo3.getName());
+            		item.put("desc", GAControllerDiablo3.getDescription());
+            		list_control.add(item);
 			//
 			item = new HashMap<String,String>();
 			item.put("name", GAControllerBasic.getName());

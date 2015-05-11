@@ -47,11 +47,11 @@ public class GAControllerMouse extends GAController implements
 	}
 	
 	public static String getName() {
-		return "Diablo 3";
+		return "Mouse";
 	}
 	
 	public static String getDescription() {
-		return "virtual pad controller";
+		return "Mouse only controller";
 	}
 
 	@Override
