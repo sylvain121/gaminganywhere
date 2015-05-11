@@ -117,6 +117,16 @@ public class GAControllerPadABXY extends GAController implements
 		return super.onTouch(v, evt);
 	}
 
+	@Override
+	public boolean onKeyDownReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
+	public boolean onKeyUpReceived(int keyCode) {
+		return false;
+	}
+
 	private boolean keyLeft = false;
 	private boolean keyRight = false;
 	private boolean keyUp = false;

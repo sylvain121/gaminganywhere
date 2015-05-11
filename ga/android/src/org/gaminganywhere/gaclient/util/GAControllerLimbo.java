@@ -104,6 +104,16 @@ public class GAControllerLimbo extends GAController implements
 	}
 
 	@Override
+	public boolean onKeyDownReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
+	public boolean onKeyUpReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
 	public void onClick(View v) {
 		if (v == buttonBack) {
 			finish();

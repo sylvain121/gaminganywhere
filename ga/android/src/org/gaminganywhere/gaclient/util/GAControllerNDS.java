@@ -228,6 +228,16 @@ public class GAControllerNDS extends GAController implements
 		return false;
 	}
 
+	@Override
+	public boolean onKeyDownReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
+	public boolean onKeyUpReceived(int keyCode) {
+		return false;
+	}
+
 	private boolean keyLeft = false;
 	private boolean keyRight = false;
 	private boolean keyUp = false;

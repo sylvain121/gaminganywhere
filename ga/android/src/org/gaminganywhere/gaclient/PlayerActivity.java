@@ -21,6 +21,7 @@ package org.gaminganywhere.gaclient;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import android.view.*;
 import org.gaminganywhere.gaclient.util.*;
 
 import android.app.Activity;
@@ -34,12 +35,6 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -217,6 +212,8 @@ public class PlayerActivity extends Activity implements SurfaceHolder.Callback, 
 				controller = new GAControllerPSP(this);
             } else if(cname.equals(GAControllerDiablo3.getName())) {
                 controller = new GAControllerDiablo3(this);
+			} else if(cname.equals(GAControllerMouse.getName())) {
+				controller = new GAControllerMouse(this);
 			} else {
 				controller = new GAControllerBasic(this);
 			}
@@ -315,5 +312,16 @@ public class PlayerActivity extends Activity implements SurfaceHolder.Callback, 
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		Log.d("ga_log", "GL surface created.");
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		controller.onKeyDownReceived(keyCode);
+		return true;
+	}
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		controller.onKeyUpReceived(keyCode);
+		return true;
 	}
 }

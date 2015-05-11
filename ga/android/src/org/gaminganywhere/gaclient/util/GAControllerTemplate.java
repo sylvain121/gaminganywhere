@@ -41,4 +41,14 @@ public class GAControllerTemplate extends GAController {
 		// must be called last
 		return super.onTouch(v, evt);
 	}
+
+	@Override
+	public boolean onKeyDownReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
+	public boolean onKeyUpReceived(int keyCode) {
+		return false;
+	}
 }

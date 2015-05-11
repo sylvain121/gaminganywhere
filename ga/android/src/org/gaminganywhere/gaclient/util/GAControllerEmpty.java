@@ -53,6 +53,16 @@ public class GAControllerEmpty extends GAController implements
 	}
 
 	@Override
+	public boolean onKeyDownReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
+	public boolean onKeyUpReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
 	public void onPartitionEvent(View v, int action, int part) {
 		// do nothing
 	}

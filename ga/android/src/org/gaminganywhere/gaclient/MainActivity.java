@@ -288,10 +288,10 @@ public class MainActivity extends Activity implements
 			SimpleAdapter adapter = null;
             		
                         // new Mouse controller
-                        item = new HashMap<String,String>();
-                        item.put("name", GAControllerMouse.getName());
-                        item.put("desc", GAControllerMouse.getDescription());
-                        list_control.add(item);
+            item = new HashMap<String,String>();
+            item.put("name", GAControllerMouse.getName());
+            item.put("desc", GAControllerMouse.getDescription());
+            list_control.add(item);
 
 			// new D3 controller
             		item = new HashMap<String,String>();

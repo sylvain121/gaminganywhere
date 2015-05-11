@@ -97,6 +97,16 @@ public class GAControllerDualPad extends GAController implements
 	}
 
 	@Override
+	public boolean onKeyDownReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
+	public boolean onKeyUpReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
 	public void onClick(View v) {
 		if(v == buttonEsc) {
 			sendKeyEvent(true, SDL2.Scancode.ESCAPE, 0x1b, 0, 0);

@@ -139,7 +139,17 @@ public class GAControllerDiablo3 extends GAController implements
 		return super.onTouch(v, evt);
 	}
 
-	private int mouseButton = -1;
+    @Override
+    public boolean onKeyDownReceived(int keyCode) {
+        return false;
+    }
+
+    @Override
+    public boolean onKeyUpReceived(int keyCode) {
+        return false;
+    }
+
+    private int mouseButton = -1;
     //TODO reset to mouse buttons
 	private void emulateMouseButtons(int action, int part) {
 		switch(action) {

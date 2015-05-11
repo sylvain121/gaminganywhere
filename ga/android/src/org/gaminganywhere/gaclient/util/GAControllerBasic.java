@@ -80,6 +80,16 @@ public class GAControllerBasic extends GAController implements
 		return super.onTouch(v, evt);
 	}
 
+	@Override
+	public boolean onKeyDownReceived(int keyCode) {
+		return false;
+	}
+
+	@Override
+	public boolean onKeyUpReceived(int keyCode) {
+		return false;
+	}
+
 	private int mouseButton = -1;
 	private void emulateMouseButtons(int action, int part) {
 		switch(action) {

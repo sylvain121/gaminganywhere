@@ -33,7 +33,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-public class GAController implements OnTouchListener {
+public abstract class GAController implements OnTouchListener {
 
 	private Context context = null;
 	private GAClient client = null;
@@ -350,4 +350,8 @@ public class GAController implements OnTouchListener {
 		}
 		return false;
 	}
+	public abstract boolean onKeyDownReceived(int keyCode);
+	public abstract boolean onKeyUpReceived(int keyCode);
+
+
 }
