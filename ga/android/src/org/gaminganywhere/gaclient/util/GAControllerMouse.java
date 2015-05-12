@@ -60,19 +60,51 @@ public class GAControllerMouse extends GAController implements
         buttonPotion.setOnTouchListener(this);
 	}
 
+    boolean PRIMARY = false;
+    boolean SECONDARY = false;
+
 	@Override
 	public boolean onTouch(View v, MotionEvent evt) {
-		int action = evt.getAction();
+		int action = evt.getActionMasked();
         int mouseButton = evt.getButtonState();
-        if(mouseButton == MotionEvent.BUTTON_PRIMARY && action == MotionEvent.ACTION_DOWN) {
-            this.sendMouseKey(true, SDL2.Button.LEFT, getMouseX(), getMouseY());
-        } else if(mouseButton == MotionEvent.BUTTON_PRIMARY && action == MotionEvent.ACTION_UP) {
-            this.sendMouseKey(false, SDL2.Button.LEFT, getMouseX(), getMouseY());
-        } else if(mouseButton == MotionEvent.BUTTON_SECONDARY && action == MotionEvent.ACTION_DOWN) {
-            this.sendMouseKey(true, SDL2.Button.RIGHT, getMouseX(), getMouseY());
-        } else if(mouseButton == MotionEvent.BUTTON_SECONDARY && action == MotionEvent.ACTION_DOWN) {
-            this.sendMouseKey(false, SDL2.Button.RIGHT, getMouseX(), getMouseY());
+        Log.d("BUTTON_STATE", Integer.toString(mouseButton));
+        Log.d("ACTION", Integer.toString(action));
+
+        switch (evt.getButtonState()) {
+            case MotionEvent.BUTTON_PRIMARY:
+                PRIMARY = true;
+                break;
+            case MotionEvent.BUTTON_SECONDARY:
+                SECONDARY = true;
+                break;
         }
+
+        switch (evt.getActionMasked()) {
+            case MotionEvent.ACTION_MOVE:
+                switch(mouseButton){
+                    case 1:
+                        PRIMARY = true;
+                        SECONDARY = false;
+                        break;
+                    case 2:
+                        PRIMARY = false;
+                        SECONDARY = true;
+                        break;
+                    case 3:
+                        PRIMARY = true;
+                        SECONDARY = true;
+                        break;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                PRIMARY = false;
+                SECONDARY = false;
+                break;
+        }
+        Log.d("mouse primary", Boolean.toString(PRIMARY));
+        Log.d("mouse secondary", Boolean.toString(SECONDARY));
+        this.sendMouseKey(PRIMARY, SDL2.Button.LEFT, getMouseX(), getMouseY());
+        this.sendMouseKey(SECONDARY, SDL2.Button.RIGHT, getMouseX(), getMouseY());
 
 		return super.onTouch(v, evt);
 	}
