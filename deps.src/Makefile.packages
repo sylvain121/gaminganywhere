@@ -24,8 +24,10 @@ X265		= x265-1.4.tar.bz2
 X265DIR		= x265-1.4
 XVID		= xvidcore-1.3.3.tar.bz2
 XVIDDIR		= xvidcore
-FFMPEG		= ffmpeg-2.5.3.tar.bz2
-FFMPEGDIR	= ffmpeg-2.5.3
+FFMPEG		= ffmpeg_libnvenc-master.tar.bz2
+FFMPEGDIR	= ffmpeg_libnvenc-master
+#FFMPEG		= ffmpeg-2.6.3.tar.bz2
+#FFMPEGDIR	= ffmpeg-2.6.3
 LIVE555		= live.2015.02.05.tar.gz
 LIVE555DIR	= live
 
