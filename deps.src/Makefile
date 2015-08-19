@@ -128,6 +128,7 @@ xvid:
 ffmpeg:
 	$(TBZUNPACK) $(FFMPEG)
 	cd $(FFMPEGDIR); ./configure --prefix=$(GADEPS) \
+		--enable-x11grab \
 		--enable-shared --enable-pic \
 		--enable-libmp3lame \
 		--enable-libtheora --enable-libvorbis \
@@ -135,6 +136,8 @@ ffmpeg:
 		--enable-libx265 \
 		--enable-libopus \
 		--enable-libxvid \
+		--enable-libnvenc \
+		--enable-version3 --cpu=native \
 		--enable-gpl --enable-nonfree --disable-outdev=sdl \
 		--extra-cflags=-I$(GADEPS)/include \
 		--extra-ldflags=-L$(GADEPS)/lib
