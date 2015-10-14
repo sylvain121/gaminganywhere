@@ -191,7 +191,7 @@ vencoder_init(void *arg) {
 		params.i_csp = X264_CSP_I420;
 		params.i_width  = outputW;
 		params.i_height = outputH;
-		params.vui.b_fullrange = 1;
+		//params.vui.b_fullrange = 1;
 		params.b_repeat_headers = 1;
 		params.b_annexb = 1;
 		// handle x264-params
@@ -548,6 +548,8 @@ vencoder_raw(void *arg, int *size) {
 #if defined __APPLE__
 	int64_t in = (int64_t) arg;
 	int iid = (int) (in & 0xffffffffLL);
+#elif defined __x86_64__
+	int iid = (long long) arg;
 #else
 	int iid = (int) arg;
 #endif
